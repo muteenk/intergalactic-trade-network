@@ -23,6 +23,7 @@ export interface ISpaceStation extends Document {
   planet: Schema.Types.ObjectId;
   inventory: Array<{
     item: Schema.Types.ObjectId;
+    name: string;
     quantity: number;
   }>;
   location: {
@@ -38,6 +39,7 @@ export interface IPlanet extends Document {
   name: string;
   inventory: Array<{
     item: Schema.Types.ObjectId;
+    name: string;
     quantity: number;
   }>;
   location: {

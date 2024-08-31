@@ -14,6 +14,9 @@ const planetSchema = new mongoose.Schema<IPlanet>({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Item",
       },
+      name: {
+        type: String,
+      },
       quantity: {
         type: Number,
       },

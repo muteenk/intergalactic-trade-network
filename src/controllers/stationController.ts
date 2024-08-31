@@ -51,4 +51,4 @@ export const getStationById = catchAsyncErrors(async (req:Request, res:Response,
         success: true,
         station
     })
-}
+});

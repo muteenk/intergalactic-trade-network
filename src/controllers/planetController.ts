@@ -50,4 +50,7 @@ export const getPlanetById = catchAsyncErrors(async (req:Request, res:Response, 
         success: true,
         planet
     })
-}
+});
+
+
+

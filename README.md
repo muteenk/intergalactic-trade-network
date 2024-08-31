@@ -365,6 +365,19 @@ Possible Responses:
 
 
 
+#### Search Items by Name
+
+If you want to search for an item by name in Planets and Space Station Inventory, you can send a GET request to the following endpoint:
+
+```
+GET /api/items/search/:name
+```
+
+Possible Responses:
+- 200: Items retrieved successfully
+- 404: Item not found
+- 500: Internal Server Error
+
 
 
 
