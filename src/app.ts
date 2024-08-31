@@ -9,6 +9,7 @@ import baseRouter from './routes/baseRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import planetRouter from './routes/planetRoutes.js';
 import stationRouter from './routes/stationRoutes.js';
+import itemRouter from './routes/itemRoutes.js';
 
 // Init
 const app = express();
@@ -33,5 +34,6 @@ app.use('/api/', baseRouter);
 app.use('/api/users', userRouter);
 app.use('/api/planets', planetRouter);
 app.use('/api/stations', stationRouter);
+app.use('/api/items', itemRouter);
 
 export default app;

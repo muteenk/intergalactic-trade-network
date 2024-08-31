@@ -27,4 +27,4 @@ export const createPlanet = catchAsyncErrors(async (req:Request, res:Response, n
             planet
         })
     
-}
+})

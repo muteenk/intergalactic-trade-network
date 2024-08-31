@@ -11,7 +11,6 @@ const itemSchema = new mongoose.Schema<IItem>({
   },
   description: {
     type: String,
-    required: [true, 'Please provide a description'],
   },
   value: {
     type: Number,

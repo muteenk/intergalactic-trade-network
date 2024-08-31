@@ -27,4 +27,4 @@ export const createStation = catchAsyncErrors(async (req:Request, res:Response, 
             station
         })
     
-}
+})

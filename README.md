@@ -277,6 +277,43 @@ Possible Responses:
 
 
 
+### Items endpoints
+
+For items related operations, you can use the following endpoints:
+
+#### Create a new item (Admin Only)
+```
+POST /api/item/admin/create/
+```
+
+If you want to create a new item, you can send a POST request to the above endpoint with the following payload:
+
+```json
+{
+    "name": "Item Name",
+    "description": "Item Description",
+    "value": 100
+}
+```
+
+In the above snippet:
+- `name` is the name of the items
+- `description` is the description of the Items
+- `value` is the value of the item
+
+
+Possible Responses:
+- 201: Planet created successfully
+- 400: Bad request
+- 401: Unauthorized
+- 500: Internal Server Error
+
+
+
+
+
+
+
 ## Instructions for API Testing
 
 
