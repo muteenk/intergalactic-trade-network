@@ -15,6 +15,26 @@ export const registerUser = catchAsyncErrors(async (req:Request, res:Response, n
 
     const {name, email, password, role, location, locationType} = req.body;
 
+    if (email === "" || email === " " || !email)
+      return next(new ErrorHandler("Please provide an Email Address", 400));
+
+    if (name === "" || name === " " || !name)
+      return next(new ErrorHandler("Please provide a Name", 400));
+
+    if (!location)
+      return next(new ErrorHandler("Please provide a Location", 400));
+
+    if (!locationType || (locationType !== "spacestation" && locationType !== "planet"))
+      return next(new ErrorHandler("Please provide a valid Location Type", 400));
+
+    if (password.length < 8)
+        return next(new ErrorHandler("Password must be atleast 8 characters long", 400));
+
+    const userExists = await User.findOne({email});
+    if (userExists){
+        return next(new ErrorHandler("User already exists", 403));
+    } 
+
     const user = await User.create({
         name,
         email,
