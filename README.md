@@ -227,6 +227,56 @@ Possible Responses:
 - 500: Internal Server Error
 
 
+
+
+
+### Space Station endpoints
+
+For space station related operations, you can use the following endpoints:
+
+#### Create a new Space Station (Admin Only)
+```
+POST /api/stations/admin/create/
+```
+
+If you want to create a new space station, you can send a POST request to the above endpoint with the following payload:
+
+```json
+{
+    "name": "Space Station Name",
+    "inventory": [{
+        "item": "ItemID",
+        "quantity": 100
+    }],
+    "location": {
+        "x": 101,
+        "y": 202,
+        "z": 303
+    } 
+}
+```
+
+In the above snippet:
+- `name` is the name of the space stations
+- `inventory` is the inventory of the planets. It is an optional field. It is an array of objects with the following fields:
+    - `item` is the ObjectID of item
+    - `quantity` is the quantity of the item
+- `location` is the location of the planet. It is an object with the following fields:
+    - `x` is the x-coordinate of the planet
+    - `y` is the y-coordinate of the planet
+    - `z` is the z-coordinate of the planet
+
+
+Possible Responses:
+- 201: Planet created successfully
+- 400: Bad request
+- 401: Unauthorized
+- 500: Internal Server Error
+
+
+
+
+
 ## Instructions for API Testing
 
 

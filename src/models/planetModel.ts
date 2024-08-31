@@ -35,5 +35,5 @@ const planetSchema = new mongoose.Schema<IPlanet>({
   },
 });
 
-const Planet = mongoose.model<IPlanet>("Planet", planetSchema);
+const Planet = mongoose.model("Planet", planetSchema);
 export default Planet;

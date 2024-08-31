@@ -8,7 +8,7 @@ import errorMiddleware from './middleware/error.js';
 import baseRouter from './routes/baseRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import planetRouter from './routes/planetRoutes.js';
-
+import stationRouter from './routes/stationRoutes.js';
 
 // Init
 const app = express();
@@ -32,6 +32,6 @@ app.use(errorMiddleware);
 app.use('/api/', baseRouter);
 app.use('/api/users', userRouter);
 app.use('/api/planets', planetRouter);
-
+app.use('/api/stations', stationRouter);
 
 export default app;
