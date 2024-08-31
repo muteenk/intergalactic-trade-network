@@ -1,10 +1,11 @@
+import { Schema, Document } from 'mongoose';
+
+
+// Interface for User Schema
 export interface IUser extends Document {
     name: string;
     email: string;
     password: string;
-    dob: Date;
-    primaryCurrency: string;
-    ocupation: string;
     role: string;
     resetPasswordToken: string | undefined;
     resetPasswordExpire: Date | undefined;
@@ -13,6 +14,70 @@ export interface IUser extends Document {
     resetPasswordTokenGenerator: () => string;
 }
 
-export interface IUserAuthRequest extends Request {
-    user: string // or any other type
-  }
+
+// Interface for Space Station Schema
+export interface ISpaceStation extends Document {
+  name: string;
+  planet: Schema.Types.ObjectId;
+  inventory: Array<{
+    item: Schema.Types.ObjectId;
+    quantity: number;
+  }>;
+  location: {
+    x: number;
+    y: number;
+    z: number;
+  };
+}
+
+
+// interface for Planet Schema
+export interface IPlanet extends Document {
+  name: string;
+  inventory: Array<{
+    item: Schema.Types.ObjectId;
+    quantity: number;
+  }>;
+  location: {
+    x: number;
+    y: number;
+    z: number;
+  };
+}
+
+
+// Interface for Item Schema
+export interface IItem extends Document {
+  name: string;
+  description: string;
+  value: number;
+}
+
+
+export interface ITransaction extends Document {
+  sender: Schema.Types.ObjectId;
+  receiver: Schema.Types.ObjectId;
+  items: Array<{
+    item: Schema.Types.ObjectId;
+    quantity: number;
+  }>;
+  price: number;
+  status: 'pending' | 'completed' | 'cancelled';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ITrade extends Document {
+  transaction: Schema.Types.ObjectId;
+  currentLocation: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  destination: Schema.Types.ObjectId;
+  status: 'pending' | 'in-transit' | 'accepted' | 'rejected' | 'cancelled';
+  estimatedDelivery: Date;
+}
+
+
+

@@ -29,8 +29,8 @@ app.use(errorMiddleware);
 
 
 // Routes
-app.use('/api/v1', baseRouter);
-app.use('/api/v1/users', userRouter);
+app.use('/api/', baseRouter);
+app.use('/api/users', userRouter);
 
 
 

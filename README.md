@@ -6,6 +6,8 @@ Backend System for an Intergalactic Trading Network. This system will handle tra
 
 ## Technologies in use
 
+- TypeScript: Using TypeScript for the entire project because it is a superset of JavaScript that adds optional types to the language. It is easier to write and maintain code with TypeScript because of all the type safety features.
+
 - Node.js: Using Node.js runtime environment for server-side scripting.
 
 - Express.js: Using Express.js for building the RESTful API. I will be using express.js because it is a fast, unopinionated, minimalist web framework for Node.js. It makes building RESTful APIs easier and faster.

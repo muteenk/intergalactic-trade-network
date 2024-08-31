@@ -1,4 +1,7 @@
 -> Primary Tasks
+  - Buying and Selling Goods b/w Space Stations and Planets
+  - Inventory Management
+  - Handling Authentication
 
 
 -> Secondary Tasks
