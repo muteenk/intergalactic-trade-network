@@ -28,6 +28,62 @@ Backend System for an Intergalactic Trading Network. This system will handle tra
 
 ## API Documentation
 
+### Base URL
+```
+http://localhost:{port}/
+```
+
+### Base Endpoints
+
+To test if the API is working, you can send a GET request to the base endpoint.
+
+```
+GET /api/
+```
+
+If you recieve a response code '200' with the message `Welcome to the Intergalactic Trading Network API`, then the API is working.
+
+
+### User Endpoints
+
+For user related operations, you can use the following endpoints:
+
+#### Create a new User
+```
+POST /api/users/register/
+```
+If you want to create a new user, you can send a POST request to the above endpoint with the following payload:
+
+```json
+{
+    "name": "testuser",
+    "password": "password",
+    "email": "example@mail.com",
+    "role": "admin" | "vendor" | "user",
+    "location": PlanetId | SpaceStationId,
+    "locationType": "planet" | "spacestation"
+}
+```
+
+In the above snippet:
+- `name` is the name of the users
+- `password` is the password of the users
+- `email` is the email of the users
+- `role` is the role of the users. It can be either `admin`, `vendor`, or `user`. If you select 'user' you can access user only routes, if you select vendor you can access vendor only routes, and if you select admin you can access all (admin, vendor and user) routes.
+- `location` is the location of the user. It can be either a `PlanetId` or a `SpaceStationId`.
+- `locationType` is the type of location. It can be either `planet` or `spacestation`.
+
+
+Possible Responses:
+- 201: User created successfully
+- 400: Bad request
+- 403: User already exists
+- 500: Internal Server Error
+
+
+
+
+
 
 ## Instructions for API Testing
 

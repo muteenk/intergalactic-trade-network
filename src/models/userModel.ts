@@ -25,24 +25,21 @@ const userSchema = new mongoose.Schema<IUser>({
         min: [8, "Please provide a password of atleast 8 Characters"],
         select: false
     },
-    dob: {
-        type: Date,
-        required: [true, "Please provide your Date of Birth"],
-    },
-    primaryCurrency: {
-        type: String,
-        required: [true, "Please select your primary currency"],
-    },
-    ocupation: {
-        type: String,
-        required: [true, "Please enter your ocupation"],
-    },
     role: {
         type: String,
         default: "user"
     },
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        refPath: "locationType",
+        required: true,
+    },
+    locationType: {  
+        type: String,
+        required: true,
+        enum: ["spacestation", "planet"]
+    },
 
-    
     resetPasswordToken: String,
     resetPasswordExpire: Date
 

@@ -6,7 +6,8 @@ export interface IUser extends Document {
     name: string;
     email: string;
     password: string;
-    role: string;
+    role: 'user' | 'admin' | 'vendor';
+    location: Schema.Types.ObjectId;
     resetPasswordToken: string | undefined;
     resetPasswordExpire: Date | undefined;
     comparePassword: (enteredPassword: string) => Promise<boolean>;
@@ -54,6 +55,7 @@ export interface IItem extends Document {
 }
 
 
+// Interface for Transaction Schema
 export interface ITransaction extends Document {
   sender: Schema.Types.ObjectId;
   receiver: Schema.Types.ObjectId;
@@ -67,6 +69,8 @@ export interface ITransaction extends Document {
   updatedAt: Date;
 }
 
+
+// Interface for Trade Schema
 export interface ITrade extends Document {
   transaction: Schema.Types.ObjectId;
   currentLocation: {
