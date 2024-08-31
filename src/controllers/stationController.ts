@@ -27,4 +27,28 @@ export const createStation = catchAsyncErrors(async (req:Request, res:Response, 
             station
         })
     
-})
+});
+
+
+export const getStations = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
+    const stations = await Station.find();
+
+    res.status(200).json({
+        success: true,
+        stations
+    })
+});
+
+
+export const getStationById = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
+    const station = await Station.findById(req.params.id);
+
+    if (!station) {
+        return next(new ErrorHandler("Station not found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        station
+    })
+}

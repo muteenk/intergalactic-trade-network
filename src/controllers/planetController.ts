@@ -27,4 +27,27 @@ export const createPlanet = catchAsyncErrors(async (req:Request, res:Response, n
             planet
         })
     
-})
+});
+
+export const getPlanets = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
+    const planets = await Planet.find();
+
+    res.status(200).json({
+        success: true,
+        planets
+    })
+});
+
+
+export const getPlanetById = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
+    const planet = await Planet.findById(req.params.id);
+
+    if (!planet) {
+        return next(new ErrorHandler("Planet not found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        planet
+    })
+}

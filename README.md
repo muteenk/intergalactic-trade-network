@@ -228,6 +228,34 @@ Possible Responses:
 
 
 
+#### Get all Planets
+```
+GET /api/planets/
+```
+
+If you want to get all the planets, you can send a GET request to the above endpoint.
+
+Possible Responses:
+- 200: Planets retrieved successfully
+- 500: Internal Server Error
+
+
+
+#### Get Planet by ID
+```
+GET /api/planets/:id
+```
+
+If you want to get a planet by ID, you can send a GET request to the above endpoint.
+
+Possible Responses:
+- 200: Planet retrieved successfully
+- 404: Planet not found
+- 500: Internal Server Error
+
+
+
+
 
 
 ### Space Station endpoints
@@ -271,6 +299,33 @@ Possible Responses:
 - 201: Planet created successfully
 - 400: Bad request
 - 401: Unauthorized
+- 500: Internal Server Error
+
+
+
+#### Get all Space Stations
+```
+GET /api/stations/
+```
+
+If you want to get all the space stations, you can send a GET request to the above endpoint.
+
+Possible Responses:
+- 200: Space Stations retrieved successfully
+- 500: Internal Server Error
+
+
+
+#### Get Space Station by ID
+```
+GET /api/stations/:id
+```
+
+If you want to get a space station by ID, you can send a GET request to the above endpoint.
+
+Possible Responses:
+- 200: Space Station retrieved successfully
+- 404: Space Station not found
 - 500: Internal Server Error
 
 
