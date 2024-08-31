@@ -155,6 +155,34 @@ Possible Responses:
 - 500: Internal Server Error
 
 
+#### Get User Profile
+```
+GET /api/users/me/
+```
+
+If you want to get the profile of the currently logged in user, you can send a GET request to the above endpoint.
+
+Possible Responses:
+- 200: User profile retrieved successfully
+- 401: Unauthorized
+- 500: Internal Server Error
+
+
+
+#### Logout User
+```
+GET /api/users/logout/
+```
+
+If you want to logout the currently logged in user, you can send a GET request to the above endpoint.
+
+Possible Responses:
+- 200: User logged out successfully
+- 500: Internal Server Error
+
+
+
+
 
 
 

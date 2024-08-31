@@ -28,7 +28,7 @@ userRouter.route("/password/update").put(isUserAuthenticated, updateUserPassword
 userRouter.route("/me/update").put(isUserAuthenticated, updateUserProfile)
 
 // Admin CRUD
-userRouter.route("/admin/users").get(isUserAuthenticated, authorizeRoles("admin"), getAllUsers);
+userRouter.route("/admin/allUsers").get(isUserAuthenticated, authorizeRoles("admin"), getAllUsers);
 userRouter.route("/admin/user/:id").get(isUserAuthenticated, authorizeRoles("admin"), getOneUser);
 
 export default userRouter;
