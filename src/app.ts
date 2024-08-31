@@ -7,7 +7,7 @@ import errorMiddleware from './middleware/error.js';
 // Route Imports
 import baseRouter from './routes/baseRoutes.js';
 import userRouter from './routes/userRoutes.js';
-
+import planetRouter from './routes/planetRoutes.js';
 
 
 // Init
@@ -31,7 +31,7 @@ app.use(errorMiddleware);
 // Routes
 app.use('/api/', baseRouter);
 app.use('/api/users', userRouter);
-
+app.use('/api/planets', planetRouter);
 
 
 export default app;

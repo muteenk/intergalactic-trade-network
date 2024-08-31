@@ -8,6 +8,7 @@ export interface IUser extends Document {
     password: string;
     role: 'user' | 'admin' | 'vendor';
     location: Schema.Types.ObjectId;
+    locationType: 'spacestation' | 'planet';
     resetPasswordToken: string | undefined;
     resetPasswordExpire: Date | undefined;
     comparePassword: (enteredPassword: string) => Promise<boolean>;

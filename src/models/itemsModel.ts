@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IItem } from '../interfaces/schemaInterfaces.ts';
+import { IItem } from '../interfaces/schemaInterfaces.js';
 
 const itemSchema = new mongoose.Schema<IItem>({
   
