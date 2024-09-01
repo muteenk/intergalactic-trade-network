@@ -629,6 +629,43 @@ If you want to search for an item by name in Planets and Space Station Inventory
 GET /api/items/search/:name
 ```
 
+Possible Responses:
+
+```json
+
+{
+    "success": true,
+    "planets": [
+        {
+            "location": {
+                "x": -100,
+                "y": 200,
+                "z": 500
+            },
+            "_id": "66d36653b3ecad5ed0c583e5",
+            "name": "mars",
+            "inventory": [
+                {
+                    "item": "66d383a7744779bfe524ec7f",
+                    "name": "Food",
+                    "quantity": 3,
+                    "_id": "66d3b518de779f8d5e6031d8"
+                },
+                {
+                    "item": "66d3874c744779bfe524ec88",
+                    "name": "Sanitation Products",
+                    "quantity": 5,
+                    "_id": "66d3b518de779f8d5e6031d9"
+                }
+            ],
+            "__v": 0
+        }
+    ],
+    "stations": []
+}
+
+```
+
 
 Possible Responses Codes:
 - 200: Items retrieved successfully
@@ -645,6 +682,44 @@ GET /api/items/:id
 ```
 
 Possible Responses:
+
+```json
+
+{
+    "success": true,
+    "planets": [
+        {
+            "location": {
+                "x": -100,
+                "y": 200,
+                "z": 500
+            },
+            "_id": "66d36653b3ecad5ed0c583e5",
+            "name": "mars",
+            "inventory": [
+                {
+                    "item": "66d383a7744779bfe524ec7f",
+                    "name": "Food",
+                    "quantity": 3,
+                    "_id": "66d3b518de779f8d5e6031d8"
+                },
+                {
+                    "item": "66d3874c744779bfe524ec88",
+                    "name": "Sanitation Products",
+                    "quantity": 5,
+                    "_id": "66d3b518de779f8d5e6031d9"
+                }
+            ],
+            "__v": 0
+        }
+    ],
+    "stations": []
+}
+
+```
+
+
+Possible Response Codes:
 - 200: Item retrieved successfully
 - 404: Item not found
 - 500: Internal Server Error

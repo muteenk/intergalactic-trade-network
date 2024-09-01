@@ -37,7 +37,7 @@ export const searchByName = catchAsyncErrors(async (req:Request, res:Response, n
 
     const stations = await Station.find({ "inventory.name": req.params.name });
 
-    if (planets.length <= 0 || stations.length <= 0) {
+    if (planets.length <= 0 && stations.length <= 0) {
         return next(new ErrorHandler("Item not found", 404));
     }
 
@@ -52,12 +52,12 @@ export const searchByName = catchAsyncErrors(async (req:Request, res:Response, n
 
 
 export const searchById = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
-  
+
   const planets = await Planet.find({ "inventory.item": req.params.id });
   const stations = await Station.find({ "inventory.item": req.params.id });
 
-  if (planets.length <= 0 || stations.length <= 0) {
-    return next(new ErrorHandler("Item not found", 404));
+  if (planets.length <= 0 && stations.length <= 0) {
+    return next(new ErrorHandler("Item not found", 403));
   }
 
   res.status(200).json({
