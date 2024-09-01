@@ -53,6 +53,9 @@ export const getPlanetById = catchAsyncErrors(async (req:Request, res:Response, 
 });
 
 
+
+// Inventory Management
+
 export const updatePlanetInventory = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
    
     // item_id is for the item to be added to the inventory

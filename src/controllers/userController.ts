@@ -72,6 +72,24 @@ export const loginUser = catchAsyncErrors(async (req:Request, res:Response, next
 
 
 
+// Get User Details
+
+export const getUserDetails = catchAsyncErrors(async (req:any, res:Response, next:NextFunction) => {
+
+    const user = await User.findById(req.user.id);
+    
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    res.status(201).json({
+        success: true,
+        user
+    })
+
+})
+
+
 // Logout User
 export const logoutUser = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
 
@@ -86,6 +104,7 @@ export const logoutUser = catchAsyncErrors(async (req:Request, res:Response, nex
     })
 
 })
+
 
 
 
@@ -177,23 +196,6 @@ export const resetPassword = catchAsyncErrors(async (req:Request, res:Response, 
 })
 
 
-
-// Get User Details
-
-export const getUserDetails = catchAsyncErrors(async (req:any, res:Response, next:NextFunction) => {
-
-    const user = await User.findById(req.user.id);
-    
-    if (!user) {
-        return next(new ErrorHandler("User not found", 404));
-    }
-
-    res.status(201).json({
-        success: true,
-        user
-    })
-
-})
 
 
 

@@ -60,30 +60,31 @@ export interface IItem extends Document {
 
 // Interface for Transaction Schema
 export interface ITransaction extends Document {
-  sender: Schema.Types.ObjectId;
-  receiver: Schema.Types.ObjectId;
-  items: Array<{
-    item: Schema.Types.ObjectId;
-    quantity: number;
-  }>;
-  price: number;
-  status: 'pending' | 'completed' | 'cancelled';
-  createdAt: Date;
-  updatedAt: Date;
+  trade: Schema.Types.ObjectId;
+  currentLocation: Schema.Types.ObjectId;
+  currentLocationType: 'spacestation' | 'planet';
+  destination: Schema.Types.ObjectId;
+  destinationType: 'spacestation' | 'planet';
+  status: 'pending' | 'in-transit' | 'completed' | 'cancelled';
+  estimatedDelivery: Date;
 }
 
 
 // Interface for Trade Schema
 export interface ITrade extends Document {
-  transaction: Schema.Types.ObjectId;
-  currentLocation: {
-    x: number;
-    y: number;
-    z: number;
+  sender: Schema.Types.ObjectId;
+  senderType: 'spacestation' | 'planet';
+  senderItem: {
+    item: Schema.Types.ObjectId;
+    quantity: number;
   };
-  destination: Schema.Types.ObjectId;
-  status: 'pending' | 'in-transit' | 'accepted' | 'rejected' | 'cancelled';
-  estimatedDelivery: Date;
+  receiver: Schema.Types.ObjectId;
+  receiverType: 'spacestation' | 'planet';
+  receiverItem: {
+    item: Schema.Types.ObjectId;
+    quantity: number;
+  };
+  createdAt: Date;
 }
 
 

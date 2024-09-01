@@ -70,8 +70,14 @@ export const searchById = catchAsyncErrors(async (req:Request, res:Response, nex
 
 
 
-type InventoryItems = {
-  item: string;
-  name: string;
-  quantity: number;
-}
+
+export const getAllItems = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
+  
+      const items = await Item.find();
+  
+      res.status(200).json({
+          success: true,
+          items
+      })
+  
+  });
