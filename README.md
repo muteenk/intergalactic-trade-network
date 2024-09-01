@@ -420,11 +420,58 @@ If you want to update the inventory of a planet, you can send a PUT request to t
 
 ```json
 {
-    "item": "ItemID",
+    "item": "66d383a7744779bfe524ec7f",
     "quantity": 100
 }
 ```
 
+
+In the above snippet:
+
+- `item` is the ObjectID of items
+- `quantity` is the quantity of the items
+
+
+Possible Response:
+
+```json
+{
+    "success": true,
+    "planet": {
+        "location": {
+            "x": -100,
+            "y": 200,
+            "z": 500
+        },
+        "_id": "66d36653b3ecad5ed0c583e5",
+        "name": "mars",
+        "inventory": [
+            {
+                "item": "66d383a7744779bfe524ec7f",
+                "name": "Food",
+                "quantity": 103,
+                "_id": "66d3b518de779f8d5e6031d8"
+            },
+            {
+                "item": "66d3874c744779bfe524ec88",
+                "name": "Sanitation Products",
+                "quantity": 5,
+                "_id": "66d3b518de779f8d5e6031d9"
+            }
+        ],
+        "__v": 0
+    }
+}
+```
+
+
+Possible Response Codes:
+
+- 200: Inventory updated successfully
+- 400: Bad request
+- 401: Unauthorized
+- 404: Planet not found/Item not found
+- 500: Internal Server Error
 
 
 
