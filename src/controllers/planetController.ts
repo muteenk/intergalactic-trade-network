@@ -53,4 +53,29 @@ export const getPlanetById = catchAsyncErrors(async (req:Request, res:Response, 
 });
 
 
+export const updatePlanetInventory = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
+    
+    
+    let { inventory } = req.body;
+  
+    const planet = await Planet.findByIdAndUpdate(req.params.id, {
+      inventory: [...inventory]
+    }, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: true
+    });
+  
+    if (!planet) {
+      return next(new ErrorHandler("Planet not found", 404));
+    }
+  
+    res.status(200).json({
+      success: true,
+      planet
+    })
+  
+  });
+
+
 

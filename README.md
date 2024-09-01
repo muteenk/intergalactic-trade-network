@@ -654,6 +654,14 @@ Possible Responses:
 
 ## Instructions for API Testing
 
+### Unit tests
+
+To run the unit tests, you can use the following command:
+
+```
+npm run test
+```
+
 
 ## Limitations and Future Improvements
 

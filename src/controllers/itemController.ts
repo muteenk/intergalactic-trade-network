@@ -66,4 +66,12 @@ export const searchById = catchAsyncErrors(async (req:Request, res:Response, nex
     stations
   })
 
+});
+
+
+
+type InventoryItems = {
+  item: string;
+  name: string;
+  quantity: number;
 }
