@@ -16,8 +16,8 @@ const planetRouter = express.Router();
 planetRouter.route('/admin/create').post(isUserAuthenticated, authorizeRoles('admin'), createPlanet);
 
 // General CRUD
-planetRouter.route('/').get(isUserAuthenticated, getPlanets);
-planetRouter.route('/:id').get(isUserAuthenticated, getPlanetById);
+planetRouter.route('/').get(getPlanets);
+planetRouter.route('/:id').get(getPlanetById);
 
 // Vendor CRUD
 planetRouter.route('/inventory/add/:id').put(isUserAuthenticated, authorizeRoles('admin', 'vendor'), updatePlanetInventory);

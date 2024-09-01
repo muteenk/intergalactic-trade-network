@@ -18,7 +18,7 @@ itemRouter.route('/admin/create').post(isUserAuthenticated, authorizeRoles('admi
 // General Routes
 itemRouter.route('/search/:name').get(isUserAuthenticated, searchByName);
 itemRouter.route('/search/:id').get(isUserAuthenticated, searchById);
-itemRouter.route('/all').get(isUserAuthenticated, getAllItems);
+itemRouter.route('/all').get(getAllItems);
 
 export default itemRouter;
 

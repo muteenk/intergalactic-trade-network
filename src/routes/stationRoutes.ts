@@ -17,8 +17,8 @@ const stationRouter = express.Router();
 stationRouter.route('/admin/create').post(isUserAuthenticated, authorizeRoles('admin'), createStation);
 
 // General CRUD
-stationRouter.route('/').get(isUserAuthenticated, getStations);
-stationRouter.route('/:id').get(isUserAuthenticated, getStationById);
+stationRouter.route('/').get(getStations);
+stationRouter.route('/:id').get(getStationById);
 
 // Vendor CRUD
 stationRouter.route('/inventory/add/:id').put(isUserAuthenticated, authorizeRoles('admin', 'vendor'), updateStationInventory);
