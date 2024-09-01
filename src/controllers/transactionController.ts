@@ -210,3 +210,35 @@ export const createTransaction = catchAsyncErrors(async (req: any, res: Response
 
 
 });
+
+
+
+
+
+
+// Get Single Transaction
+export const trackTransactionsById = catchAsyncErrors(async (req: Request, res: Response, next: NextFunction) => {
+  const transaction = await Transaction.findById(req.params.id);
+  if (!transaction)
+    return next(new ErrorHandler("No Records Found", 404));
+  res.status(200).json({
+    success: true,
+    transaction,
+  });
+});
+
+
+
+
+// Get All Transactions
+export const getAllTransactions = catchAsyncErrors(async (req: any, res: Response, next: NextFunction) => {
+  const user = req.user;
+  const transactions = await Transaction.find({destination: user.location});
+  res.status(200).json({
+    success: true,
+    transactions,
+  });
+});
+
+
+

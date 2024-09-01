@@ -997,6 +997,77 @@ Possible Response Codes:
 
 
 
+#### Get all Trade Transactions
+```
+GET /api/transactions/track/all
+```
+
+If you want to get all the trade transactions, you can send a GET request to the above endpoint.
+
+
+Possible Responses:
+
+```json
+{
+    "success": true,
+    "transactions": [
+        {
+            "_id": "66d4e161103d1f38f2b8dfc1",
+            "trade": "66d4e161103d1f38f2b8dfbf",
+            "currentLocation": "66d36653b3ecad5ed0c583e5",
+            "currentLocationType": "planet",
+            "destination": "66d3742e088a2b8e1ddcc052",
+            "destinationType": "spacestation",
+            "status": "pending",
+            "estimatedDelivery": "2024-05-08T18:30:00.000Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+
+Possible Response Codes:
+- 200: Trade transactions retrieved successfully
+- 500: Internal Server Error
+
+
+
+
+
+#### Get Trade Transaction by ID
+```
+GET /api/transactions/track/:id
+```
+
+If you want to get a trade transaction by ID, you can send a GET request to the above endpoint.
+
+
+Possible Response:
+
+```json
+{
+    "success": true,
+    "transaction": {
+        "_id": "66d4e161103d1f38f2b8dfc1",
+        "trade": "66d4e161103d1f38f2b8dfbf",
+        "currentLocation": "66d36653b3ecad5ed0c583e5",
+        "currentLocationType": "planet",
+        "destination": "66d3742e088a2b8e1ddcc052",
+        "destinationType": "spacestation",
+        "status": "pending",
+        "estimatedDelivery": "2024-05-08T18:30:00.000Z",
+        "__v": 0
+    }
+}
+```
+
+Possible Response Codes:
+- 200: Trade transaction retrieved successfully
+- 404: Trade transaction not found
+- 500: Internal Server Error
+
+
 
 
 ## Instructions for API Testing
