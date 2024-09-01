@@ -411,6 +411,24 @@ Possible Response Codes:
 
 
 
+#### Update Planet Inventory (Admin & Vendor Only)
+```
+PUT /api/planets/inventory/add/:id'
+```
+
+If you want to update the inventory of a planet, you can send a PUT request to the above endpoint with the following payload:
+
+```json
+{
+    "item": "ItemID",
+    "quantity": 100
+}
+```
+
+
+
+
+
 
 ### Space Station endpoints
 
