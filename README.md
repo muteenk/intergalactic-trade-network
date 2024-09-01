@@ -858,6 +858,146 @@ Possible Response Codes:
 
 
 
+#### Get all Items
+```
+GET /api/items/all
+```
+
+If you want to get all the items, you can send a GET request to the above endpoint.
+
+
+Possible Responses:
+```json
+{
+    "success": true,
+    "items": [
+        {
+            "_id": "66d383a7744779bfe524ec7f",
+            "name": "Food",
+            "description": "2kg Potato",
+            "value": 1000,
+            "__v": 0
+        },
+        {
+            "_id": "66d38689744779bfe524ec82",
+            "name": "Space Suits",
+            "value": 100000,
+            "__v": 0
+        },
+        {
+            "_id": "66d386a2744779bfe524ec85",
+            "name": "Computer Components",
+            "value": 10000,
+            "__v": 0
+        },
+        {
+            "_id": "66d3874c744779bfe524ec88",
+            "name": "Sanitation Products",
+            "value": 500,
+            "__v": 0
+        }
+    ]
+}
+```
+
+Possible Response Codes:
+
+- 200: Items retrieved successfully
+- 500: Internal Server Error
+
+
+
+
+
+
+
+### Trade & Transaction Endpoints
+
+For trade related operations, you can use the following endpoints:
+
+
+#### Create a new Trade Transaction 
+```
+POST /api/transactions/new
+```
+
+If you want to create a new trade transaction, you can send a POST request to the above endpoint with the following payload:
+
+```json
+{
+    "sender": "66d36653b3ecad5ed0c583e5",
+    "senderType": "planet",
+    "senderItem": {
+        "item": "66d383a7744779bfe524ec7f",
+        "quantity": 2
+    },
+    "receiverItem": {
+        "item": "66d3874c744779bfe524ec88",
+        "quantity": 3
+    },
+    "estimatedDelivery": "05-09-2024"
+}
+```
+
+
+In the above snippet:
+- `sender` is the ObjectID of the other party
+- `senderType` is the type of the sender. It can be either `planet` or `spacestation`
+- `senderItem` is the item to be sent by the sender. It is an object with the following fields:
+    - `item` is the ObjectID of the item
+    - `quantity` is the quantity of the item
+- `receiverItem` is the item to be received by the you (your planet / space station). It is an object with the following fields:
+    - `item` is the ObjectID of the item
+    - `quantity` is the quantity of the item
+- `estimatedDelivery` is the estimated delivery date of the trade transaction
+
+
+
+Possible Response:
+
+```json
+{
+    "success": true,
+    "trade": {
+        "sender": "66d36653b3ecad5ed0c583e5",
+        "senderType": "planet",
+        "senderItem": {
+            "item": "66d383a7744779bfe524ec7f",
+            "quantity": 2
+        },
+        "receiver": "66d3742e088a2b8e1ddcc052",
+        "receiverType": "spacestation",
+        "receiverItem": {
+            "item": "66d3874c744779bfe524ec88",
+            "quantity": 3
+        },
+        "_id": "66d4e161103d1f38f2b8dfbf",
+        "createdAt": "2024-09-01T21:49:21.252Z",
+        "__v": 0
+    },
+    "transaction": {
+        "trade": "66d4e161103d1f38f2b8dfbf",
+        "currentLocation": "66d36653b3ecad5ed0c583e5",
+        "currentLocationType": "planet",
+        "destination": "66d3742e088a2b8e1ddcc052",
+        "destinationType": "spacestation",
+        "status": "pending",
+        "estimatedDelivery": "2024-05-08T18:30:00.000Z",
+        "_id": "66d4e161103d1f38f2b8dfc1",
+        "__v": 0
+    }
+}
+```
+
+Possible Response Codes:
+- 201: Trade transaction created successfully
+- 400: Bad request
+- 401: Unauthorized
+- 500: Internal Server Error
+
+
+
+
 
 ## Instructions for API Testing
 
