@@ -114,7 +114,7 @@ export const updatePlanetInventory = catchAsyncErrors(async (req:Request, res:Re
   
     res.status(200).json({
       success: true,
-      updatedPlanet
+      planet: updatedPlanet
     })
   
   });

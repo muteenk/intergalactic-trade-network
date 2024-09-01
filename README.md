@@ -416,6 +416,8 @@ Possible Response Codes:
 PUT /api/planets/inventory/add/:id'
 ```
 
+`:id` is the ObjectID of the planet.
+
 If you want to update the inventory of a planet, you can send a PUT request to the above endpoint with the following payload:
 
 ```json
@@ -632,6 +634,71 @@ Possible Response Codes:
 - 200: Space Station retrieved successfully
 - 404: Space Station not found
 - 500: Internal Server Error
+
+
+
+#### Update Space Station Inventory (Admin & Vendor Only)
+```
+PUT /api/stations/inventory/add/:id'
+```
+
+`:id` is the ObjectID of the space station.
+
+If you want to update the inventory of a space station, you can send a PUT request to the above endpoint with the following payload:
+
+```json
+{
+    "item": "66d383a7744779bfe524ec7f",
+    "quantity": 100
+}
+```
+
+In the above snippet:
+
+- `item` is the ObjectID of Items
+- `quantity` is the quantity of the items
+
+
+Possible Response:
+
+```json
+{
+    "success": true,
+    "station": {
+        "location": {
+            "x": -100,
+            "y": 200,
+            "z": 500
+        },
+        "_id": "66d36653b3ecad5ed0c583e5",
+        "name": "mss",
+        "inventory": [
+            {
+                "item": "66d383a7744779bfe524ec7f",
+                "name": "Food",
+                "quantity": 103,
+                "_id": "66d3b518de779f8d5e6031d8"
+            },
+            {
+                "item": "66d3874c744779bfe524ec88",
+                "name": "Sanitation Products",
+                "quantity": 5,
+                "_id": "66d3b518de779f8d5e6031d9"
+            }
+        ],
+        "__v": 0
+    }
+}
+```
+
+Possible Response Codes:
+
+- 200: Inventory updated successfully
+- 400: Bad request
+- 401: Unauthorized
+- 404: Space Station not found/Item not found
+- 500: Internal Server Error
+
 
 
 
