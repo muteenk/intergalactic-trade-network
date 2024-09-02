@@ -3,6 +3,7 @@ import {
   createTransaction,
   trackTransactionsById,
   getAllTransactions,
+  updateTransaction,
 } from '../controllers/transactionController.js';
 
 import { isUserAuthenticated, authorizeRoles } from "../middleware/auth.js";
@@ -15,5 +16,8 @@ transactionRouter.route('/track/all').get(isUserAuthenticated, getAllTransaction
 
 // General CRUD
 transactionRouter.route('/track/:id').get(trackTransactionsById);
+
+// Vendor CRUD
+transactionRouter.route('/update/:id').put(isUserAuthenticated, authorizeRoles('admin', 'vendor'), updateTransaction);
 
 export default transactionRouter;

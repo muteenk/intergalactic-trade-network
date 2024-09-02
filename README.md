@@ -48,6 +48,17 @@ The controller is responsible for handling the request from the user and sending
 
 
 
+### Diagrams
+
+## Schema Diagrams
+![Schema Diagrams](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/proposed_schema.png)
+
+## User Flow Diagrams
+
+
+
+
+
 ### Database Schema
 
 #### User Schema
@@ -1188,6 +1199,62 @@ Possible Response:
 Possible Response Codes:
 - 200: Trade transaction retrieved successfully
 - 404: Trade transaction not found
+- 500: Internal Server Error
+
+
+
+#### Update Transactions (Vendor & Admin only)
+```
+PUT /api/transactions/update/:id
+```
+
+`:id` is the ObjectID of the transaction.
+
+
+If you want to update details of a transaction as a vendor or an admin, you can send a PUT request to the above endpoint with the following payload:
+
+```json
+{ 
+    "currentLocation": ObjectID, 
+    "currentLocationType": "planet" | "spacestation",
+    "status": "in-transit", 
+    "estimatedDelivery": "2024-05-08"
+}
+```
+
+
+In the above snippet:
+- `currentLocation` is the ObjectID of the current location
+- `currentLocationType` is the type of the current location. It can be either `planet` or `spacestation`
+- `status` is the status of the transaction. It can be either `pending`, `in-transit`, `completed`, or `cancelled`
+- `estimatedDelivery` is the estimated delivery date of the transaction
+
+
+Possible Response:
+
+```json
+{
+    "success": true,
+    "transaction": {
+        "_id": "66d4e161103d1f38f2b8dfc1",
+        "trade": "66d4e161103d1f38f2b8dfbf",
+        "currentLocation": "66d36653b3ecad5ed0c583e5",
+        "currentLocationType": "planet",
+        "destination": "66d3742e088a2b8e1ddcc052",
+        "destinationType": "spacestation",
+        "status": "in-transit",
+        "estimatedDelivery": "2024-05-08T18:30:00.000Z",
+        "__v": 0
+    }
+}
+```
+
+
+Possible Response Codes:
+- 200: Transaction updated successfully
+- 400: Bad request
+- 401: Unauthorized
+- 404: Transaction not found
 - 500: Internal Server Error
 
 
