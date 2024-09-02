@@ -13,7 +13,7 @@ import itemRouter from './routes/itemRoutes.js';
 import transactionRouter from './routes/transactionRoutes.js';
 
 // Init
-const app = express();
+const app: express.Application = express();
 const corsOptions = {
     origin: "*",
     credentials: true,
