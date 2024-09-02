@@ -14,8 +14,6 @@ Backend System for an Intergalactic Trading Network. This system will handle tra
 
 - MongoDB: Using MongoDB as the database because it is a NoSQL database and it is easy to scale and manage. It is great with handling high volume data and provides real-time features.
 
-- Redis: Using Redis as a caching layer to store frequently accessed data. Redis is an in-memory data structure store, used as a database, cache, and message broker.
-
 
 ## Design Decisions and Architectural Considerations
 
@@ -206,10 +204,6 @@ npm start
 5. The server should now be running on `http://localhost:4000/`
 
 6. You can now test the API using Postman or any other API testing tool.
-
-
-
-## Deployment Instructions
 
 
 ## API Documentation
@@ -1263,16 +1257,6 @@ Possible Response Codes:
 
 
 
-
-## Instructions for API Testing
-
-### Unit tests
-
-To run the unit tests, you can use the following command:
-
-```
-npm run test
-```
 
 
 ## Limitations and Future Improvements
