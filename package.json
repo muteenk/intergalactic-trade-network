@@ -7,8 +7,8 @@
   "scripts": {
     "test": "NODE_OPTIONS='$NODE_OPTIONS --experimental-vm-modules' npx jest",
     "build": "pnpm i && pnpm tsc",
-    "start": "node /dist/server.js",
-    "dev": "concurrently \"pnpm tsc -w\" \"nodemon ./dist/server.js\""
+    "start": "node ./dist/src/server.js",
+    "dev": "concurrently \"pnpm tsc -w\" \"nodemon ./dist/src/server.js\""
   },
   "author": "",
   "license": "ISC",
