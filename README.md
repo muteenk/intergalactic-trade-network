@@ -56,6 +56,11 @@ The controller is responsible for handling the request from the user and sending
 ## User Flow Diagram
 ![User Flow Diagram](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/request_diagrams.png)
 
+## Data Flow Diagram
+![Data Flow Diagram 1](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/data-flow1.png)
+![Data Flow Diagram 2](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/data-flow2.png)
+![Data Flow Diagram 3](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/data-flow3.png)
+![Data Flow Diagram 4](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/data-flow4.png)
 
 
 ### Database Schema
