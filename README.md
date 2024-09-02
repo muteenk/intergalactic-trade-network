@@ -50,12 +50,11 @@ The controller is responsible for handling the request from the user and sending
 
 ### Diagrams
 
-## Schema Diagrams
+## Schema Diagram
 ![Schema Diagrams](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/proposed_schema.png)
 
-## User Flow Diagrams
-
-
+## User Flow Diagram
+![User Flow Diagram](https://github.com/muteenk/intergalactic-trade-network/blob/main/assets/request_diagrams.png)
 
 
 
