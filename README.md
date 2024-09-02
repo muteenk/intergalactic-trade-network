@@ -19,6 +19,128 @@ Backend System for an Intergalactic Trading Network. This system will handle tra
 
 ## Design Decisions and Architectural Considerations
 
+For this project - "Intergalactic Trading Network", I decided to go with the MVC (Model, View, Controller) architecture. This architecture is a software design pattern that separates the application into three main logical components: the model, the view, and the controller. Each of these components are built to handle specific development aspects of an application. This helps in improving the modularity of the API Service while keeping in mind the DRY (Don't Repeat Yourself) principle.
+
+### Model
+
+The model is responsible for managing the data and the schema of the application. It responds to the request from the view and to the instructions from the controller to update itself.
+
+### View
+
+The view is responsible for displaying the data that is received from the controller. It is the user interface that the user interacts with. Although, i haven't implemented this particular part yet. But, it is important to keep in mind that the view is responsible for displaying the data to the user.
+
+### Controller
+
+The controller is responsible for handling the request from the user and sending the response back to the user. It is the intermediary between the model and the view. It receives the request from the user, processes the request, and sends the response back to the user.
+
+
+### Tech Stack Decision
+
+- **Node.js**: I chose Node.js because it is a runtime environment that allows you to run JavaScript on the server. It is fast, scalable, and easy to use. It is also great for building RESTful APIs.
+
+- **Express.js**: I chose Express.js because it is a fast, unopinionated, minimalist web framework for Node.js. It makes building RESTful APIs easier and faster.
+
+- **MongoDB**: I chose MongoDB because it is a NoSQL database which is a great choice when dealing with high throughput or high volume data, as it is horizontally scalable. Also, MongoDB among NoSQL databases is the best when dealing with Real-Time Data, thus making it the perfect database for this project.
+
+- **TypeScript**: I chose TypeScript because it is a superset of JavaScript that adds optional types to the language. It is easier to write and maintain code with TypeScript because of all the type safety features.
+
+- **Socket.io**: I chose Socket.io because it is a real-time engine that enables real-time, bidirectional, and event-based communication. It is great for building real-time applications like chat applications, real-time analytics, and real-time games.
+
+
+
+### Database Schema
+
+#### User Schema
+
+```
+    name: string,
+    email: string,
+    password: string,
+    role: "admin" | "vendor" | "user",
+    location: ObjectID, // PlanetID or SpaceStationID
+    locationType: "planet" | "spacestation",
+
+```
+
+#### Planet Schema
+
+```
+    name: string,
+    inventory: [
+        {
+            item: ObjectID,
+            quantity: number
+        }
+    ],
+    location: {
+        x: number,
+        y: number,
+        z: number
+    }
+
+```
+
+#### Space Station Schema
+
+```
+    name: string,
+    inventory: [
+        {
+            item: ObjectID,
+            quantity: number
+        }
+    ],
+    location: {
+        x: number,
+        y: number,
+        z: number
+    }
+
+```
+
+#### Item Schema
+
+```
+    name: string,
+    description: string
+```
+
+#### Transaction Schema
+
+```
+    trade: ObjectID,
+    currentLocation: ObjectID, // PlanetID or SpaceStationID
+    currentLocationType: "planet" | "spacestation",
+    destination: ObjectID, // PlanetID or SpaceStationID
+    destinationType: "planet" | "spacestation",
+    status: "pending" | "in-transit" | "completed" | "cancelled",
+    estimatedDelivery: Date
+```
+
+#### Trade Schema
+
+```
+    sender: ObjectID, // PlanetID | SpaceStationID
+    senderType: "planet" | "spacestation",
+    senderItem: {
+        item: ObjectID,
+        quantity: Number
+    },
+    receiver: ObjectID, // PlanetID | SpaceStationID
+    receiverType: "planet" | "spacestation",
+    receiverItem: {
+        item: ObjectID,
+        quantity: Number,
+    },
+    createdAt: Date,
+```
+
+
+
+
+
+
+
 
 ## Installation
 
@@ -27,7 +149,8 @@ Backend System for an Intergalactic Trading Network. This system will handle tra
 - Node.js
 - Package Manager of your choice (npm, yarn, pnpm, bun etc)
 - MongoDB
-- Redis
+- Socket.io
+- TypeScript
 
 ### Steps
 
@@ -1083,6 +1206,21 @@ npm run test
 
 ## Limitations and Future Improvements
 
+### Limitations
+
+- Doesn't have caching implemented yet
+- The Database real-time updations are not fully enabled yet
+- The system is not fully optimized for high throughput data
+- It is deployed on the a free tier server
+
+### Future Improvements
+
+- Implement caching to store frequently accessed data using Redis
+- Enable all the Real-Time Database Features of MongoDB
+- Implementation of PUB/SUBS for message queueing so that it is able to manage high volume data in real-time
+- Extended Features like Ratings, Planet & SpaceStation Data 
+
+
 
 ## Scaling the system
 
@@ -1090,3 +1228,5 @@ npm run test
  - Large Number of Concurrent Trade Transactions & Cargo Updates
  - High Data Volume & Complex Queries
  - Optimization: Caching, Data Partitioning & Indexing
+ - Real-Time Notifications
+ - High Availability & Fault Tolerance

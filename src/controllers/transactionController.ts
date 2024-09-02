@@ -242,3 +242,51 @@ export const getAllTransactions = catchAsyncErrors(async (req: any, res: Respons
 
 
 
+// Update Transaction
+export const updateTransaction = catchAsyncErrors(async (req: Request, res: Response, next: NextFunction) => {
+  const curTransaction = await Transaction.findById(req.params.id);
+
+  if (!curTransaction)
+    return next(new ErrorHandler("No Records Found", 404));
+
+  if (curTransaction.status === "completed")
+    return next(new ErrorHandler("Transaction already delivered", 400));
+  
+  if (curTransaction.status === "cancelled")
+    return next(new ErrorHandler("Transaction already cancelled", 400));
+
+
+
+  const { currentLocation, currentLocationType, status, estimatedDelivery} = req.body;
+
+  if (!currentLocation || !currentLocationType || !status || !estimatedDelivery)
+    return next(new ErrorHandler("Please provide all the required fields", 400));
+
+  if (currentLocationType !== "planet" && currentLocationType !== "spacestation")
+    return next(new ErrorHandler("Invalid location type", 400));
+
+  if (status !== "pending" && status !== "completed" && status !== "cancelled" && status !== "in-transit")
+    return next(new ErrorHandler("Invalid status", 400));
+
+  if (isNaN(Date.parse(estimatedDelivery)))
+    return next(new ErrorHandler("Please provide a valid estimated delivery date", 400));
+
+  
+  const updatedTransaction = await Transaction.findByIdAndUpdate(req.params.id, {
+    currentLocation,
+    currentLocationType,
+    status,
+    estimatedDelivery,
+  }, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+  
+
+  res.status(204).json({
+    success: true,
+    updatedTransaction,
+  });
+
+});
